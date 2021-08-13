@@ -26,6 +26,7 @@ router.put("/:username/:task_id", async function (req, res) {
   try {
     username = req.params.username;
     task_id = req.params.task_id;
+    console.log(`user:${username}, task_id:${task_id}`)
     tasks = await taskModel.completeTask(username, task_id);
     res.status(200).send("Update successful");
   } catch {
