@@ -6,7 +6,7 @@ router.get("/:username", async function (req, res) {
   try {
     username = req.params.username;
     tasks = await taskModel.getAll(username);
-    res.status(200).send(tasks);
+    res.status(200).send({ tasks: tasks });
   } catch {
     res.status(401).send({ content: "Unauthorized" });
   }
