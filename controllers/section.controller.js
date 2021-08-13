@@ -16,7 +16,9 @@ router.get("/:username", async function (req, res) {
   try {
     username = req.params.username;
     sections = await sectionModel.getAll(username);
-    res.status(200).send({ content: "Get Sections Successful", sections });
+    res
+      .status(200)
+      .send({ content: "Get Sections Successful", sections: sections });
   } catch {
     res.status(401).send({ content: "Unauthorized" });
   }

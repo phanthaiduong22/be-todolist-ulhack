@@ -1,5 +1,4 @@
 const db = require("../utils/db");
-const { get } = require("./user.model");
 
 module.exports = {
   async getAll(username) {
