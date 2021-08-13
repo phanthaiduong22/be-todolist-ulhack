@@ -12,6 +12,28 @@ router.get("/:username", async function (req, res) {
   }
 });
 
+router.put("/:username/:task_id", async function (req, res) {
+  try {
+    username = req.params.username;
+    task_id = req.params.task_id;
+    tasks = await taskModel.completeTask(username, task_id);
+    res.status(200).send("Update successful");
+  } catch {
+    res.status(401).send({ content: "Unauthorized" });
+  }
+});
+
+router.delete("/:username/:task_id", async function (req, res) {
+  try {
+    username = req.params.username;
+    task_id = req.params.task_id;
+    await taskModel.deleteTask(username, task_id);
+    res.status(200).send({ content: "Delete Successful" });
+  } catch {
+    res.status(401).send({ content: "Unauthorized" });
+  }
+});
+
 router.post("/", async function (req, res) {
   try {
     task = req.body;
