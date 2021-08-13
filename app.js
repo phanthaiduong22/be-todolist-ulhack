@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-app.use("/login/", require("./controllers/login.controller"));
+app.use("/account/", require("./controllers/account.controller"));
 app.use("/tasks/", require("./controllers/task.controller"));
 
 app.listen(port, () => {
