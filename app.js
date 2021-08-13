@@ -19,6 +19,7 @@ app.get("/", (req, res) => {
 
 app.use("/account/", require("./controllers/account.controller"));
 app.use("/tasks/", require("./controllers/task.controller"));
+app.use("/sections/", require("./controllers/section.controller"));
 
 app.listen(port, () => {
   console.log(`BE app listening at http://localhost:${port}`);
