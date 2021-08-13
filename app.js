@@ -18,6 +18,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/login/", require("./controllers/login.controller"));
+app.use("/tasks/", require("./controllers/task.controller"));
 
 app.listen(port, () => {
   console.log(`BE app listening at http://localhost:${port}`);
