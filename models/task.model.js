@@ -3,7 +3,6 @@ const { get } = require("./user.model");
 
 module.exports = {
   async getAll(username) {
-    console.log(username);
     return await db("tasks").where({ username: username });
   },
   async add(task) {
@@ -12,11 +11,22 @@ module.exports = {
   async completeTask(username, task_id) {
     return await db("tasks")
       .where({ username: username, task_id: task_id })
-      .update({ done: true });
+      .update({ is_done: true });
   },
   async deleteTask(username, task_id) {
     return await db("tasks")
       .where({ username: username, task_id: task_id })
       .del();
+  },
+  async getProductivity(username) {
+    let doneTasks = await db("tasks").where({
+      username: username,
+      is_done: true,
+    });
+    let Tasks = await db("tasks").where({ username: username });
+    let lenDoneTasks = doneTasks.length;
+    let lenTasks = Tasks.length;
+    console.log(lenDoneTasks, lenTasks);
+    return lenDoneTasks / lenTasks;
   },
 };

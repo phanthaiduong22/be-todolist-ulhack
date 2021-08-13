@@ -12,6 +12,16 @@ router.get("/:username", async function (req, res) {
   }
 });
 
+router.get("/:username/productivity", async function (req, res) {
+  try {
+    username = req.params.username;
+    let productivity = await taskModel.getProductivity(username);
+    res.status(200).send({ productivity: productivity });
+  } catch {
+    res.status(401).send({ content: "Unauthorized" });
+  }
+});
+
 router.put("/:username/:task_id", async function (req, res) {
   try {
     username = req.params.username;
