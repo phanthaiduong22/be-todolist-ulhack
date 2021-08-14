@@ -35,7 +35,6 @@ router.get("/:username/productivity", async function (req, res) {
 router.post("/", async function (req, res) {
   try {
     task = req.body;
-    console.log(task);
     await taskModel.add(task);
     res.status(200).send({ content: "Add Task Successful" });
   } catch {
