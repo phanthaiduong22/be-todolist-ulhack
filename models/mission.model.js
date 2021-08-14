@@ -3,8 +3,8 @@ module.exports = {
   async getMissions(username) {
     return await db("missions").select("*").where({ username });
   },
-  async getMessages(username) {
-    return await db("messages").select("*").where({ username });
+  async getMessages(mission_id) {
+    return await db("messages").select("*").where({ mission_id });
   },
   async addMission(mission) {
     return await db("missions").insert(mission);

@@ -14,13 +14,14 @@ router.get("/:username", async function (req, res) {
   }
 });
 // Get messages
-router.get("/:username/messages", async function (req, res) {
+router.get("/:mission_id/:username/messages", async function (req, res) {
   try {
     username = req.params.username;
-    missions = await missionModel.getMessages(username);
+    mission_id = req.params.mission_id;
+    messages = await missionModel.getMessages(mission_id);
     res
       .status(200)
-      .send({ content: "Get Sections Successful", missions: missions });
+      .send({ content: "Get Messages Successful", messages: messages });
   } catch {
     res.status(401).send({ content: "Unauthorized" });
   }
