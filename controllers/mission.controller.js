@@ -63,7 +63,7 @@ router.put("/:username/messages/:message_id", async function (req, res) {
 router.delete("/:username/messages/:message_id", async function (req, res) {
   try {
     message_id = req.params.message_id;
-    await missionModel.completeMessage(message_id);
+    await missionModel.unCompleteMessage(message_id);
     res.status(200).send({ content: "Set Is Done To False Successful" });
   } catch {
     res.status(401).send({ content: "Unauthorized" });
