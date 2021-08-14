@@ -25,7 +25,6 @@ module.exports = {
     let Tasks = await db("tasks").where({ username: username });
     let lenDoneTasks = doneTasks.length;
     let lenTasks = Tasks.length;
-    console.log(lenDoneTasks, lenTasks);
     return lenDoneTasks / lenTasks;
   },
 };
