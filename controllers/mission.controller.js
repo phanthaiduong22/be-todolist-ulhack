@@ -39,9 +39,8 @@ router.post("/:username", async function (req, res) {
 // Send message
 router.post("/:username/messages", async function (req, res) {
   try {
-    mission_id = req.params.mission_id;
     message = req.body;
-    await missionModel.addMessage(mission_id, message);
+    await missionModel.addMessage(message);
     res.status(200).send({ content: "Add Message Successful" });
   } catch {
     res.status(401).send({ content: "Unauthorized" });
@@ -53,7 +52,7 @@ router.put("/:username/messages/:message_id", async function (req, res) {
   try {
     message_id = req.params.message_id;
     await missionModel.completeMessage(message_id);
-    res.status(200).send({ content: "Get Sections Successful" });
+    res.status(200).send({ content: "Get Is Done To True Successful" });
   } catch {
     res.status(401).send({ content: "Unauthorized" });
   }
@@ -63,7 +62,7 @@ router.delete("/:username/messages/:message_id", async function (req, res) {
   try {
     message_id = req.params.message_id;
     await missionModel.completeMessage(message_id);
-    res.status(200).send({ content: "Set Is Done Me Successful" });
+    res.status(200).send({ content: "Set Is Done To False Successful" });
   } catch {
     res.status(401).send({ content: "Unauthorized" });
   }
