@@ -29,3 +29,22 @@ CREATE TABLE `tasks` (
   FOREIGN KEY (`section_id`) REFERENCES sections(`section_id`),
   PRIMARY KEY (`task_id`)
 );
+
+DROP TABLE IF EXISTS `missions`;
+CREATE TABLE `missions` (
+  `mission_id` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) NOT NULL,
+  `mission_name` varchar(500) NOT NULL,
+  FOREIGN KEY (`username`) REFERENCES users(`username`),
+  PRIMARY KEY (`mission_id`)
+);
+
+DROP TABLE IF EXISTS `messages`;
+CREATE TABLE `messages` (
+  `message_id` int NOT NULL AUTO_INCREMENT,
+  `mission_id` int NOT NULL,
+  `message` varchar(500) NOT NULL,
+  `is_done` BOOLEAN DEFAULT FALSE,
+  FOREIGN KEY (`mission_id`) REFERENCES missions(`mission_id`),
+  PRIMARY KEY (`message_id`)
+);
