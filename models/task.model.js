@@ -1,4 +1,5 @@
 const db = require("../utils/db");
+const moment = require("moment");
 
 module.exports = {
   async getAll(username) {
@@ -26,5 +27,14 @@ module.exports = {
     let lenDoneTasks = doneTasks.length;
     let lenTasks = Tasks.length;
     return lenDoneTasks / lenTasks;
+  },
+  async getTodolist(username) {
+    var now = new Date();
+    const today = moment(now, "DD/MM/YYYY").format("YYYY-MM-DD");
+    return await db("tasks").where({
+      username: username,
+      due_date: today,
+      is_done: false,
+    });
   },
 };
