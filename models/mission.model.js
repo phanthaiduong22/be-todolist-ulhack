@@ -13,12 +13,12 @@ module.exports = {
     return await db("messages").insert(message);
   },
   async completeMessage(message_id) {
-    return (await db("messages").where({ message_id })).update({
+    return await db("messages").where({ message_id }).update({
       is_done: true,
     });
   },
   async unCompleteMessage(message_id) {
-    return (await db("messages").where({ message_id })).update({
+    return await db("messages").where({ message_id }).update({
       is_done: false,
     });
   },

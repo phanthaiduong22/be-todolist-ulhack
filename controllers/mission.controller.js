@@ -52,6 +52,7 @@ router.post("/:username/messages", async function (req, res) {
 router.put("/:username/messages/:message_id", async function (req, res) {
   try {
     message_id = req.params.message_id;
+    console.log(message_id)
     await missionModel.completeMessage(message_id);
     res.status(200).send({ content: "Get Is Done To True Successful" });
   } catch {
